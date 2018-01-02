@@ -10,15 +10,49 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        html, body {
+            font-family: 'Raleway', sans-serif;
+        }
+        nav{
+            border-bottom: 1px solid whitesmoke;
+            max-height: 50px;
+        }
+        .navbar-brand{
+            font-size: 2.5rem;
+            font-weight: 100;
+        }
+        small{
+            color: lightgrey;
+            padding: 0 10px;
+        }
+        section{
+            display: flex;
+        }
+        aside{
+            padding: 20px 15px;
+            border-right: 1px solid whitesmoke;
+            width: 20%;
+        }
+        main{
+            width: 100%;
+            padding: 15px;
+            height: calc(100vh - 50px);
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+                <a class="navbar-item" href="/home">
+                    <small>|\/|</small>Booking<small>|\/|</small>
                 </a>
             </div>
             <div class="navbar-end">
@@ -35,7 +69,8 @@
                 @endguest
             </div>
         </nav>
-       @auth 
+        <section>
+        @auth 
         <aside class="menu">
             <p class="menu-label">
                 General
@@ -71,8 +106,10 @@
             </ul>
         </aside>
         @endauth
-
-        @yield('content')
+        <main>
+            @yield('content')
+        </main>
+        </section>
     </div>
 
     <!-- Scripts -->
